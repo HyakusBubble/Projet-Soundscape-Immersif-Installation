@@ -67,6 +67,7 @@
     <Compile Include="Assets\FreeParallax\Scripts\FreeParallax.cs" />
     <Compile Include="Assets\FreeParallax\Scripts\FreeParallaxDemo.cs" />
     <Compile Include="Assets\Scripts\door_switch.cs" />
+    <Compile Include="Assets\Scripts\trigger_oneshot.cs" />
     <Compile Include="Assets\Scripts\waypoints.cs" />
     <None Include="Assets\FreeParallax\Readme.txt" />
     <Reference Include="UnityEditor.StandardEvents">
