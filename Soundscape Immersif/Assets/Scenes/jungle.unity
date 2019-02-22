@@ -1278,6 +1278,11 @@ Prefab:
       propertyPath: m_Volume
       value: 0.28
       objectReference: {fileID: 0}
+    - target: {fileID: 82090973091975736, guid: 2caede77b2902a840a8fdaf8a5a5d530,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bce504f7bacb234b9745bbac77d3586, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2caede77b2902a840a8fdaf8a5a5d530, type: 2}
   m_IsPrefabAsset: 0
