@@ -11,6 +11,7 @@ public class waypoints : MonoBehaviour {
     bool WaitCheck;
     public float speed = 0.3f;
     int seconds;
+    public int waitTime;
     int RdmValue;
 
     IEnumerator WaitTime(int seconds)
@@ -25,7 +26,8 @@ public class waypoints : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-       
+        RdmValue = -1;
+
         RandomWayPoint();
 
     }
@@ -39,7 +41,7 @@ public class waypoints : MonoBehaviour {
         if(Vector3.Distance(transform.position, ChosenWaypoint) < 0.001f && WaitCheck == false)
         {
             
-           StartCoroutine(WaitTime(3));
+           StartCoroutine(WaitTime(waitTime));
            
             WaitCheck = true;
 
