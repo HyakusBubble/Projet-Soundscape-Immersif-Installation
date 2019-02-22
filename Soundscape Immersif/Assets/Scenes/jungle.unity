@@ -642,9 +642,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b3a2b497ceac545b0d8abf4168a48e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewfinder: {fileID: 534669902}
-  waypoint1: {fileID: 1277406230}
-  waypoint2: {fileID: 117273913}
+  WaypointArray:
+  - {fileID: 1277406230}
+  - {fileID: 117273913}
+  ChosenWaypoint: {x: 0, y: 0, z: 0}
+  speed: 1
 --- !u!1 &814537847
 GameObject:
   m_ObjectHideFlags: 0

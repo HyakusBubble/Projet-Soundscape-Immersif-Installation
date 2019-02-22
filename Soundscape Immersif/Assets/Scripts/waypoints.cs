@@ -3,46 +3,68 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class waypoints : MonoBehaviour {
-    public GameObject viewfinder;
-    public GameObject waypoint1;
-    public GameObject waypoint2;
-    private Vector2 viewfinder_pos;
-    private Vector2 waypoint1_pos;
-    private Vector2 waypoint2_pos;
+    
+    [SerializeField]
+    GameObject[] WaypointArray;
+    [SerializeField]
+    Vector3 ChosenWaypoint;
+    bool WaitCheck;
+    public float speed = 0.3f;
     int seconds;
-    public int _seconds;
-    float speed;
+    int RdmValue;
 
     IEnumerator WaitTime(int seconds)
-    {   
+    {
+        
         yield return new WaitForSeconds(seconds);
-        Debug.Log("Enter Wait Time");
+        RandomWayPoint();
+        yield return new WaitForSeconds(5);
+        WaitCheck = false;
+        
     }
 
     // Use this for initialization
     void Start () {
-        waypoint1_pos = waypoint1.transform.position;
-        waypoint2_pos = waypoint1.transform.position;
-        speed = Time.deltaTime / 4;
+       
+        RandomWayPoint();
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        viewfinder_pos = viewfinder.transform.position;
-
-        if (viewfinder_pos.x != waypoint1_pos.x && viewfinder_pos.y != waypoint1_pos.y)
-            {
-            viewfinder.transform.Translate(waypoint1_pos.x, waypoint1_pos.y, 0 * speed);
-            Debug.Log("Premier if");
-            }
-
-        else if (viewfinder_pos.x == waypoint1_pos.x && viewfinder_pos.y == waypoint1_pos.y)
+        //viewfinder_pos = viewfinder.transform.position;
+        float step = speed * Time.deltaTime;
+        
+        if(Vector3.Distance(transform.position, ChosenWaypoint) < 0.001f && WaitCheck == false)
         {
-            //WaitTime(_seconds);
-            viewfinder.transform.Translate(waypoint2_pos.x, waypoint2_pos.y, 0 * speed);
-            Debug.Log("Success ?");
+            
+           StartCoroutine(WaitTime(3));
+           
+            WaitCheck = true;
+
         }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, ChosenWaypoint, step);
+            
+            
+        }
+
+      
     }
+
+    void RandomWayPoint()
+    {
+        int oldRdm = RdmValue;
+        RdmValue = Random.Range(0, WaypointArray.Length);
+        if (RdmValue == oldRdm)
+        {
+            RdmValue = Random.Range(0, WaypointArray.Length);
+        }
+        else
+        {
+            ChosenWaypoint = new Vector3(WaypointArray[RdmValue].transform.position.x, WaypointArray[RdmValue].transform.position.y, transform.position.z);
+        }
+        }
 }
