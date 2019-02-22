@@ -9,8 +9,9 @@ public class waypoints : MonoBehaviour {
     private Vector2 viewfinder_pos;
     private Vector2 waypoint1_pos;
     private Vector2 waypoint2_pos;
-    public float speed = 0.3f;
     int seconds;
+    public int _seconds;
+    float speed;
 
     IEnumerator WaitTime(int seconds)
     {   
@@ -20,9 +21,9 @@ public class waypoints : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        waypoint1_pos = new Vector2(waypoint1.x, waypoint1.y);
-        waypoint2_pos = new Vector2(waypoint2.x, waypoint2.y);
-
+        waypoint1_pos = waypoint1.transform.position;
+        waypoint2_pos = waypoint1.transform.position;
+        speed = Time.deltaTime / 4;
 
     }
 	
@@ -30,18 +31,17 @@ public class waypoints : MonoBehaviour {
 	void Update () {
 
         viewfinder_pos = viewfinder.transform.position;
-        float step = speed * Time.deltaTime;
 
-        if (viewfinder_pos != waypoint1_pos && viewfinder_pos != waypoint1_pos)
+        if (viewfinder_pos.x != waypoint1_pos.x && viewfinder_pos.y != waypoint1_pos.y)
             {
-            viewfinder_pos = Vector2.MoveTowards(viewfinder_pos, waypoint1_pos, step);
+            viewfinder.transform.Translate(waypoint1_pos.x, waypoint1_pos.y, 0 * speed);
             Debug.Log("Premier if");
             }
 
-        else if (viewfinder_pos == waypoint1_pos && viewfinder_pos == waypoint1_pos)
+        else if (viewfinder_pos.x == waypoint1_pos.x && viewfinder_pos.y == waypoint1_pos.y)
         {
-            WaitTime(3);
-            viewfinder_pos = Vector2.MoveTowards(viewfinder_pos, waypoint2_pos, step);
+            //WaitTime(_seconds);
+            viewfinder.transform.Translate(waypoint2_pos.x, waypoint2_pos.y, 0 * speed);
             Debug.Log("Success ?");
         }
     }
