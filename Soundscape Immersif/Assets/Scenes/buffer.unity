@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -145,8 +145,8 @@ Camera:
   m_GameObject: {fileID: 55404328}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -256,3 +256,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &2012773854
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114410947101298134, guid: b9da91028b643a94f8bacbab20a26a5c,
+        type: 2}
+      propertyPath: SceneList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855588714494718, guid: b9da91028b643a94f8bacbab20a26a5c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.1961708
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855588714494718, guid: b9da91028b643a94f8bacbab20a26a5c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 9.913757
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855588714494718, guid: b9da91028b643a94f8bacbab20a26a5c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 22.375565
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855588714494718, guid: b9da91028b643a94f8bacbab20a26a5c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855588714494718, guid: b9da91028b643a94f8bacbab20a26a5c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855588714494718, guid: b9da91028b643a94f8bacbab20a26a5c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855588714494718, guid: b9da91028b643a94f8bacbab20a26a5c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855588714494718, guid: b9da91028b643a94f8bacbab20a26a5c, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114410947101298134, guid: b9da91028b643a94f8bacbab20a26a5c,
+        type: 2}
+      propertyPath: SceneList.Array.data[0]
+      value: jungle
+      objectReference: {fileID: 0}
+    - target: {fileID: 114410947101298134, guid: b9da91028b643a94f8bacbab20a26a5c,
+        type: 2}
+      propertyPath: SceneList.Array.data[1]
+      value: neon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b9da91028b643a94f8bacbab20a26a5c, type: 2}
+  m_IsPrefabAsset: 0
