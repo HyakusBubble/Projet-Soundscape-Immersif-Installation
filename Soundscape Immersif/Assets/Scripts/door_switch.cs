@@ -3,98 +3,100 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class door_switch : MonoBehaviour {
-
+public class door_switch : MonoBehaviour
+{
+    [SerializeField]
     bool is_Inside;
-    bool got_Out;
-    string sceneName;
-    Scene act_Scene;
-    int RdmValue;
+    [SerializeField]
+    bool is_Out;
+    bool stop;
+    [SerializeField]
+    public Object[] SceneArray;
+    [SerializeField]
+    public static string ChosenScene;
+    public Object BufferScene;
 
-    public string[] SceneList;
-
-    void Awake()
-    {
-            DontDestroyOnLoad(this.gameObject);
-    }
-
+    public static int RdmValue;
 
     // Use this for initialization
-    void Start () {
-        
-        is_Inside = false;
-        got_Out = false;
+    private void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("switch");
 
-        act_Scene = SceneManager.GetActiveScene();
-        sceneName = act_Scene.name;
-        RdmValue = -1;
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
     }
-	
-	// Update is called once per frame
-	void Update () {
-        //quand la porte s'ouvre
+
+    void Start()
+    {
+
+    }
+
+
+
+    IEnumerator PorteFerme()
+    {
+        
+        if (is_Inside == true && is_Out == true )
+        {
+            is_Out = false;
+            yield break;
+        }
+        if (is_Inside == true && is_Out == false)
+        {
+            RandomScene();
+            SceneManager.LoadScene(BufferScene.name);
+            is_Inside = false;
+            is_Out = true;
+            yield break;
+            //Gets out
+        }
+
+
+    }
+
+    // Use this for initialization
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.LeftArrow) && is_Inside == false && is_Out == true)
+        {
+            SceneManager.LoadScene(ChosenScene);
+            is_Inside = true;
+            // open the doors from outside
+        }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (is_Inside == false)
-            { is_Inside = true;
-                Debug.Log("GET IN");
-                Debug.Log("Inside" + is_Inside);
-                Debug.Log("Out" + got_Out);
-            }
-            //le joueur est dedans et y'a une scène jouée
-            
-           else if (is_Inside == true && got_Out == false)
-            {
-                is_Inside = false;
-                got_Out = true;
-                Debug.Log("Get Out");
-                Debug.Log("Inside" + is_Inside);
-                Debug.Log("Out" + got_Out);
-                //le joueur sort 
-            }
-            if (sceneName == "jungle" && is_Inside == false && got_Out == true) 
-            {//si le joueur n'est plus dedans & est sorti
-                SceneManager.LoadScene("buffer");
-                Debug.Log("FROM JUNGLE TO BUFFER");
-
-            }
-
-            else if (sceneName == "neon" && is_Inside == false && got_Out == true)
-            {//si le joueur n'est plus dedans & est sorti
-                SceneManager.LoadScene("buffer");
-                Debug.Log("FROM NEON TO BUFFER");
-               
-            }
-
-            else if (sceneName == "buffer" && is_Inside == true)
-            {
-                Debug.Log("PASS THROUGH BUFFER");
-                RandomScene();
-            }
-
-           
+            StartCoroutine(PorteFerme());
         }
+
+
     }
 
     void RandomScene()
     {
-
         int oldRdm = RdmValue;
-        RdmValue = Random.Range(0, SceneList.Length);
+        RdmValue = Random.Range(0, SceneArray.Length);
+        while (RdmValue == oldRdm)
+        {
+            RdmValue = Random.Range(0, SceneArray.Length);
+        }
 
-        Debug.Log("RANDOMSCENE EXECUTES");
 
-        
-            if (RdmValue == oldRdm)
-            {
-                RandomScene();
-                Debug.Log("RELOADING RANDOMSCENE");
-            }
-            else
-            {
-                Debug.Log("LOADING" + SceneList[RdmValue]);
-                SceneManager.LoadScene(SceneList[RdmValue]);
-            }
-        
+        ChosenScene = SceneArray[RdmValue].name;
+        Debug.Log(SceneArray[RdmValue].name);
+
+    }
+    void SceneLoader(string strn)
+    {
+        SceneManager.LoadScene(strn);
     }
 }
+
+    

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114410947101298134}
   m_Layer: 0
   m_Name: Scene Switch Manager
-  m_TagString: Untagged
+  m_TagString: switch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,3 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232063f465586e54ea9a4d79dc6f2a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_Inside: 0
+  is_Out: 0
+  SceneArray:
+  - {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
+  - {fileID: 102900000, guid: 399d0d4efa24c894a9ae0100539c6fc6, type: 3}
+  BufferScene: {fileID: 102900000, guid: c5377494e8d69fc4c8d15d744914b39b, type: 3}
